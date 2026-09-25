@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>shmall — Веб-разработка на заказ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide-static/0.363.0/umd/lucide.min.js"></script>
+<style>
+:root{
+  --bg:#0a0a0c; --bg2:#121218; --line:#ffffff14;
+  --violet:#8b5cf6; --sunset:#f97362; --blue:#4f7dfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:80px;}
+body{background:var(--bg); color:#f2f1f6; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;}
+.glass{background:linear-gradient(180deg,#ffffff08,#ffffff03); border:1px solid var(--line); backdrop-filter:blur(16px);}
+.grad-text{background:linear-gradient(100deg,#c9b6ff 0%,#f2a998 55%,#7ea6ff 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.glow{position:absolute; border-radius:9999px; filter:blur(90px); pointer-events:none; z-index:0;}
+.btn-primary{background:linear-gradient(100deg,var(--violet),var(--sunset)); box-shadow:0 0 0 1px #ffffff10, 0 8px 30px -8px #8b5cf680;}
+.btn-primary:hover{box-shadow:0 0 0 1px #ffffff20, 0 12px 40px -6px #8b5cf6b0; transform:translateY(-2px);}
+.nav-link{position:relative; color:#b8b6c4; transition:color .25s;}
+.nav-link:hover{color:#fff;}
+.nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:linear-gradient(90deg,var(--violet),var(--sunset));transition:width .25s;}
+.nav-link:hover::after{width:100%;}
+.card{transition:transform .35s ease, border-color .35s ease, background .35s ease;}
+.card:hover{transform:translateY(-6px); border-color:#ffffff30;}
+.tag{font-size:12px; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color:#c9c7d6; background:#ffffff06;}
+input,textarea{background:#ffffff07; border:1px solid var(--line); transition:border-color .2s, background .2s;}
+input:focus,textarea:focus{outline:none; border-color:#8b5cf6a0; background:#ffffff0c;}
+.fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.fade-up.show{opacity:1; transform:translateY(0);}
+.pop{position:relative; overflow:hidden;}
+::selection{background:#8b5cf655;}
+@media (prefers-reduced-motion: reduce){ .fade-up{transition:none; opacity:1; transform:none;} }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="glass mx-3 mt-3 rounded-2xl px-5 md:px-8 py-3.5 flex items-center justify-between" style="padding-top:calc(0.875rem + env(safe-area-inset-top,0px));">
+    <a href="#top" class="flex items-center gap-2 text-lg font-bold display">
+      <span class="grad-text" style="filter:drop-shadow(0 0 14px #8b5cf680)">Артём Волков</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#features" class="nav-link">Преимущества</a>
+      <a href="#works" class="nav-link">Стек</a>
+      <a href="#process" class="nav-link">Процесс</a>
+      <a href="#pricing" class="nav-link">Тарифы</a>
+      <a href="#contact" class="nav-link">Контакты</a>
+    </nav>
+    <a href="#contact" class="btn-primary text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all">Обсудить проект</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="relative pt-40 pb-28 px-5 md:px-10">
+  <div class="glow w-[560px] h-[560px] -top-40 -left-40" style="background:#8b5cf6;opacity:.28"></div>
+  <div class="glow w-[480px] h-[480px] top-20 right-0" style="background:#f97362;opacity:.18"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="inline-flex items-center gap-2 tag mb-7">
+      <span class="w-2 h-2 rounded-full bg-emerald-400" style="box-shadow:0 0 10px #34d399"></span>
+      Доступен для новых проектов
+    </div>
+    <h1 class="display text-[42px] leading-[1.08] md:text-7xl md:leading-[1.05] font-extrabold max-w-4xl">
+      Создаю сайты,<br>которые <span class="grad-text">продают 24/7</span>
+    </h1>
+    <p class="mt-7 text-lg text-[#b8b6c4] max-w-xl leading-relaxed">
+      Проектирую и разрабатываю лендинги, интернет-магазины и веб-сервисы, которые выглядят дорого, грузятся мгновенно и превращают посетителей в заявки.
+    </p>
+    <div class="mt-9 flex flex-wrap gap-4">
+      <a href="#contact" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-xl transition-all">Заказать сайт</a>
+      <a href="#works" class="text-white font-semibold px-7 py-3.5 rounded-xl border border-[#ffffff20] hover:border-[#ffffff50] hover:bg-white/5 transition-all">Мой подход</a>
+    </div>
+
+    <!-- interface mockup -->
+    <div class="mt-16 relative">
+      <div class="glass rounded-2xl p-3 md:p-5 max-w-3xl mx-auto pop">
+        <div class="flex gap-1.5 mb-4 px-1">
+          <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span><span class="w-3 h-3 rounded-full bg-[#febc2e]"></span><span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+        </div>
+        <div class="rounded-xl p-6 md:p-10" style="background:linear-gradient(155deg,#15151d,#0d0d12)">
+          <div class="h-3 w-28 rounded-full mb-4" style="background:linear-gradient(90deg,var(--violet),var(--sunset))"></div>
+          <div class="h-6 w-2/3 rounded-md bg-white/10 mb-3"></div>
+          <div class="h-3 w-1/2 rounded-md bg-white/5 mb-8"></div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="h-20 rounded-lg border border-[var(--line)]" style="background:#ffffff05"></div>
+            <div class="h-20 rounded-lg border border-[var(--line)]" style="background:#ffffff05"></div>
+            <div class="h-20 rounded-lg border" style="background:linear-gradient(155deg,#8b5cf633,#f9736233); border-color:#ffffff20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="px-5 md:px-10 py-24 relative">
+  <div class="max-w-6xl mx-auto">
+    <div class="fade-up max-w-xl mb-14">
+      <h2 class="display text-3xl md:text-4xl font-bold">Почему заказывают у меня</h2>
+      <p class="mt-4 text-[#b8b6c4]">Каждый проект — это баланс скорости, эстетики и результата, который можно измерить в заявках.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#8b5cf633,#4f7dfa33)"><i data-lucide="zap" class="w-5 h-5 text-violet-300"></i></div>
+        <h3 class="font-semibold text-lg mb-2">Скорость загрузки</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Чистый оптимизированный код и лёгкие ассеты — сайт открывается меньше чем за секунду на любом устройстве.</p>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#f9736233,#8b5cf633)"><i data-lucide="sparkles" class="w-5 h-5 text-orange-200"></i></div>
+        <h3 class="font-semibold text-lg mb-2">Премиум-дизайн</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Уникальная визуальная концепция под каждый бренд — никаких шаблонов и конструкторов.</p>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#4f7dfa33,#8b5cf633)"><i data-lucide="search" class="w-5 h-5 text-blue-200"></i></div>
+        <h3 class="font-semibold text-lg mb-2">SEO-оптимизация</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Правильная структура, микроразметка и скорость — фундамент для верхних позиций в поиске.</p>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#8b5cf633,#f9736233)"><i data-lucide="trending-up" class="w-5 h-5 text-violet-300"></i></div>
+        <h3 class="font-semibold text-lg mb-2">Фокус на конверсию</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Каждый экран продуман так, чтобы вести посетителя к заявке, а не просто выглядеть красиво.</p>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#f9736233,#4f7dfa33)"><i data-lucide="life-buoy" class="w-5 h-5 text-orange-200"></i></div>
+        <h3 class="font-semibold text-lg mb-2">Поддержка после запуска</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Остаюсь на связи, вношу правки и слежу за тем, чтобы сайт работал стабильно.</p>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:linear-gradient(135deg,#4f7dfa33,#f9736233)"><i data-lucide="smartphone" class="w-5 h-5 text-blue-200"></i></div>
+        <h3 class="font-semibold text-lg mb-2">Адаптивность</h3>
+        <p class="text-sm text-[#b8b6c4] leading-relaxed">Пиксель в пиксель одинаково хорошо на телефоне, планшете и широком мониторе.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stack -->
+<section id="works" class="px-5 md:px-10 py-24 relative">
+  <div class="glow w-[420px] h-[420px] top-0 left-1/3" style="background:#4f7dfa;opacity:.14"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="fade-up max-w-xl mb-14">
+      <h2 class="display text-3xl md:text-4xl font-bold">С чем я работаю</h2>
+      <p class="mt-4 text-[#b8b6c4]">Современный стек для быстрых и удобных в поддержке сайтов. Портфолио пока в процессе наполнения — с радостью расскажу о подходе на созвоне.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="fade-up card glass rounded-2xl p-6 text-center">
+        <i data-lucide="atom" class="w-6 h-6 mx-auto mb-3 text-violet-300"></i>
+        <div class="text-sm font-medium">React / Next.js</div>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-6 text-center">
+        <i data-lucide="paintbrush" class="w-6 h-6 mx-auto mb-3 text-orange-200"></i>
+        <div class="text-sm font-medium">Tailwind CSS</div>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-6 text-center">
+        <i data-lucide="layout-panel-left" class="w-6 h-6 mx-auto mb-3 text-blue-200"></i>
+        <div class="text-sm font-medium">Webflow</div>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-6 text-center">
+        <i data-lucide="server" class="w-6 h-6 mx-auto mb-3 text-violet-300"></i>
+        <div class="text-sm font-medium">Node.js</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process" class="px-5 md:px-10 py-24">
+  <div class="max-w-5xl mx-auto">
+    <div class="fade-up max-w-xl mb-16">
+      <h2 class="display text-3xl md:text-4xl font-bold">Как проходит работа</h2>
+      <p class="mt-4 text-[#b8b6c4]">Прозрачный процесс в четыре этапа — от идеи до запущенного сайта.</p>
+    </div>
+    <div class="relative">
+      <div class="hidden md:block absolute left-0 right-0 top-6 h-px" style="background:linear-gradient(90deg,#ffffff05,#8b5cf680,#f9736280,#ffffff05)"></div>
+      <div class="grid md:grid-cols-4 gap-10 md:gap-6">
+        <div class="fade-up relative">
+          <div class="w-12 h-12 rounded-full glass flex items-center justify-center mb-5 relative z-10" style="box-shadow:0 0 18px #8b5cf650"><i data-lucide="search" class="w-5 h-5 text-violet-300"></i></div>
+          <h3 class="font-semibold mb-2">Анализ</h3>
+          <p class="text-sm text-[#b8b6c4] leading-relaxed">Разбираю бизнес, аудиторию и конкурентов, формирую структуру и цели сайта.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-12 h-12 rounded-full glass flex items-center justify-center mb-5 relative z-10" style="box-shadow:0 0 18px #8b5cf650"><i data-lucide="palette" class="w-5 h-5 text-violet-300"></i></div>
+          <h3 class="font-semibold mb-2">Дизайн</h3>
+          <p class="text-sm text-[#b8b6c4] leading-relaxed">Создаю визуальную концепцию и прототип, согласовываем каждую деталь.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-12 h-12 rounded-full glass flex items-center justify-center mb-5 relative z-10" style="box-shadow:0 0 18px #f9736250"><i data-lucide="code-2" class="w-5 h-5 text-orange-200"></i></div>
+          <h3 class="font-semibold mb-2">Разработка</h3>
+          <p class="text-sm text-[#b8b6c4] leading-relaxed">Верстаю и программирую сайт, тестирую на всех устройствах и браузерах.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-12 h-12 rounded-full glass flex items-center justify-center mb-5 relative z-10" style="box-shadow:0 0 18px #f9736250"><i data-lucide="rocket" class="w-5 h-5 text-orange-200"></i></div>
+          <h3 class="font-semibold mb-2">Запуск</h3>
+          <p class="text-sm text-[#b8b6c4] leading-relaxed">Публикую сайт, настраиваю аналитику и передаю проект в работу.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="px-5 md:px-10 py-24 relative">
+  <div class="glow w-[500px] h-[500px] bottom-0 right-1/4" style="background:#f97362;opacity:.14"></div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="fade-up max-w-xl mb-14">
+      <h2 class="display text-3xl md:text-4xl font-bold">Тарифы</h2>
+      <p class="mt-4 text-[#b8b6c4]">Прозрачные пакеты под разные задачи. Финальная стоимость зависит от объёма проекта.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 items-stretch">
+      <div class="fade-up card glass rounded-2xl p-8 flex flex-col">
+        <h3 class="font-semibold text-lg mb-1">Лендинг</h3>
+        <p class="text-sm text-[#b8b6c4] mb-6">Для запуска продукта или услуги</p>
+        <div class="text-4xl font-extrabold display mb-6">от 25 000 ₸</div>
+        <ul class="space-y-3 text-sm text-[#c9c7d6] mb-8 flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Одна страница, до 6 экранов</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Уникальный дизайн</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Форма заявки и аналитика</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Срок: 7–10 дней</li>
+        </ul>
+        <a href="#contact" class="text-center font-semibold px-6 py-3 rounded-xl border border-[#ffffff20] hover:border-[#ffffff50] hover:bg-white/5 transition-all">Выбрать</a>
+      </div>
+      <div class="fade-up card rounded-2xl p-8 flex flex-col relative" style="background:linear-gradient(180deg,#ffffff0c,#ffffff04); border:1px solid #8b5cf660; box-shadow:0 0 40px -10px #8b5cf660">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1 rounded-full btn-primary text-white">Популярный</span>
+        <h3 class="font-semibold text-lg mb-1 mt-2">Сайт-каталог</h3>
+        <p class="text-sm text-[#b8b6c4] mb-6">Для компаний с широким портфелем услуг</p>
+        <div class="text-4xl font-extrabold display mb-6">от 80 000 ₸</div>
+        <ul class="space-y-3 text-sm text-[#c9c7d6] mb-8 flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>До 10 страниц</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Каталог товаров/услуг</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>CMS для самостоятельного редактирования</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Срок: 3–4 недели</li>
+        </ul>
+        <a href="#contact" class="text-center font-semibold px-6 py-3 rounded-xl btn-primary text-white transition-all">Выбрать</a>
+      </div>
+      <div class="fade-up card glass rounded-2xl p-8 flex flex-col">
+        <h3 class="font-semibold text-lg mb-1">Веб-сервис / магазин</h3>
+        <p class="text-sm text-[#b8b6c4] mb-6">Индивидуальная разработка под задачу</p>
+        <div class="text-4xl font-extrabold display mb-6">от 100 000 ₸</div>
+        <ul class="space-y-3 text-sm text-[#c9c7d6] mb-8 flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Личный кабинет и оплата</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Интеграции и API</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Индивидуальная архитектура</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-300 shrink-0 mt-0.5"></i>Срок: от 6 недель</li>
+        </ul>
+        <a href="#contact" class="text-center font-semibold px-6 py-3 rounded-xl border border-[#ffffff20] hover:border-[#ffffff50] hover:bg-white/5 transition-all">Выбрать</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="px-5 md:px-10 py-24 relative">
+  <div class="glow w-[500px] h-[500px] top-0 left-0" style="background:#8b5cf6;opacity:.2"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="fade-up glass rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="display text-3xl md:text-4xl font-bold mb-4">Обсудим ваш проект?</h2>
+        <p class="text-[#b8b6c4] mb-8 leading-relaxed">Опишите задачу — отвечу в течение дня с идеями и примерной стоимостью. Либо напишите напрямую в мессенджер.</p>
+        <div class="flex flex-col gap-3">
+          <a href="https://web.telegram.org/k/?account=2#@shmallqq" target="_blank" class="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-[#ffffff20] hover:border-[#4f7dfa80] hover:bg-white/5 transition-all">
+            <i data-lucide="send" class="w-5 h-5 text-blue-300"></i><span class="font-medium">Написать в Telegram</span>
+          </a>
+          <a href="https://wa.me/" target="_blank" class="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-[#ffffff20] hover:border-[#34d39980] hover:bg-white/5 transition-all">
+            <i data-lucide="message-circle" class="w-5 h-5 text-emerald-300"></i><span class="font-medium">Написать в WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <form id="leadForm" class="flex flex-col gap-4">
+        <input required name="name" type="text" placeholder="Имя" class="rounded-xl px-4 py-3.5 text-sm">
+        <input required name="contact" type="text" placeholder="Telegram или телефон" class="rounded-xl px-4 py-3.5 text-sm">
+        <select name="budget" class="rounded-xl px-4 py-3.5 text-sm bg-[#ffffff07] border border-[var(--line)]">
+          <option class="bg-[#121218]">Бюджет: до 200 000 ₸</option>
+          <option class="bg-[#121218]">Бюджет: 200 000–500 000 ₸</option>
+          <option class="bg-[#121218]">Бюджет: от 500 000 ₸</option>
+        </select>
+        <textarea name="details" rows="3" placeholder="Коротко о проекте" class="rounded-xl px-4 py-3.5 text-sm resize-none"></textarea>
+        <button type="submit" class="btn-primary text-white font-semibold px-6 py-3.5 rounded-xl transition-all">Отправить заявку</button>
+        <p id="formMsg" class="text-sm text-emerald-300 hidden">Спасибо! Заявка получена, скоро свяжусь с вами.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="px-5 md:px-10 py-10 border-t border-[var(--line)]">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
+    <span class="font-bold display grad-text">shmall</span>
+    <div class="flex gap-5">
+      <a href="#" class="text-[#b8b6c4] hover:text-white transition-colors"><i data-lucide="send" class="w-5 h-5"></i></a>
+      <a href="#" class="text-[#b8b6c4] hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+      <a href="#" class="text-[#b8b6c4] hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+    </div>
+    <span class="text-sm text-[#77758a]">© 2026 shmall. Все права защищены.</span>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('formMsg').classList.remove('hidden');
+  this.reset();
+});
+const els = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('show'); io.unobserve(en.target); } });
+},{threshold:0.15});
+els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
